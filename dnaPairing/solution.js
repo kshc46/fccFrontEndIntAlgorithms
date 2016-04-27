@@ -1,25 +1,29 @@
-function fearNotLetter(str) {
-  var alphabet ="abcdefghijklmnopqrstuvwxyz";
+function pairElement(str) {
+  var arr = str.split("");
+  var tempArr = [];
+  var finalArr = [];
+  var i = 0;
   
-  var start = str.charCodeAt(0);
-  var finish = str.charCodeAt(str.length-1);
-  var answer = "";
-  var counter = 0;
-  
-  while ((start + counter) < finish) {
-    if (str.charCodeAt(counter) !== (start + counter)) {
-      answer = start+counter;
-      counter = 122;
+  while (i < arr.length) {
+    switch (arr[i]){
+      case "A":
+        tempArr = ["A", "T"];
+        break;
+      case "T":
+        tempArr = ["T", "A"];
+        break;
+      case "C":
+        tempArr = ["C", "G"];
+        break;
+      case "G":
+        tempArr = ["G", "C"];
+        break;
     }
-    counter++;
+    finalArr[i] = tempArr;
+    i++;
   }
   
-  if (answer !== "") {
-    return String.fromCharCode(answer);
-  } else {
-    return undefined;
-  }
-  
+  return finalArr;
 }
 
-fearNotLetter("bcd");
+pairElement("GCG");
